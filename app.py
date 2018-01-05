@@ -63,6 +63,7 @@ def index():
 def run_command():
     legal_commands = {'Play': 'player-play',
                       'Stop': 'player-stop',
+                      'Pause': 'player-pause',
                       'Next': 'player-next',
                       'Previous': 'player-prev',
                       'Increase Volume': 'vol +1%',
