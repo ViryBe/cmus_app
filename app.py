@@ -88,7 +88,7 @@ def get_status():
         play = out[0].split()[1]
         if play == 'playing':
             r['playing'] = True
-        elif play == 'stopped':
+        elif play == 'paused':
             r['playing'] = False
         info = [i for i in out if i.startswith(('tag', 'set'))]
         for i in info:
