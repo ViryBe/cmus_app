@@ -68,7 +68,6 @@
 
     <span class="btn-group">
         <button class="cmd-btn btn" title="Previous"><i class="icon-fast-backward"></i></button>
-        <!-- <button class="cmd-btn btn" title="Play"><i class="icon-play"></i></button> -->
         <button class="cmd-btn btn" title="Pause"><i id="play_pause" class="icon-pause"></i></button>
         <button class="cmd-btn btn" title="Stop"><i class="icon-stop"></i></button>
         <button class="cmd-btn btn" title="Next"><i class="icon-fast-forward"></i></button>
@@ -115,7 +114,7 @@
                     document.getElementById('play_pause').setAttribute("class", "icon-play");
                     var msg = '<p>';
                 }
-                if (response.playing == false) {
+                else if (response.playing == false) {
                     document.getElementById('play_pause').setAttribute("class", "icon-pause");
                     var msg = '<p class="gray">';
                 }
