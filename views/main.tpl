@@ -68,8 +68,8 @@
 
     <span class="btn-group">
         <button class="cmd-btn btn" title="Previous"><i class="icon-fast-backward"></i></button>
-        <button class="cmd-btn btn" title="Play"><i class="icon-play"></i></button>
-        <button class="cmd-btn btn" title="Pause"><i class="icon-pause"></i></button>
+        <!-- <button class="cmd-btn btn" title="Play"><i class="icon-play"></i></button> -->
+        <button class="cmd-btn btn" title="Pause"><i id="play_pause" class="icon-pause"></i></button>
         <button class="cmd-btn btn" title="Stop"><i class="icon-stop"></i></button>
         <button class="cmd-btn btn" title="Next"><i class="icon-fast-forward"></i></button>
     </span>
@@ -105,14 +105,20 @@
             }})
     }
     function updateStatus(){
-        $.ajax({url: '/status', dataType: 'json', context: $("div#status"), 
+        $.ajax({url: '/status', dataType: 'json', context: $("div#status"),
             error: function(){
                 var msg = '<p class="error">Connection to <code>cmus</code> cannot be established.</p>';
                 this.html(msg)
             },
             success: function(response){
-                if (response.playing == true) {var msg = '<p>'}
-                if (response.playing == false) {var msg = '<p class="gray">'}
+                if (response.playing == true) {
+                    document.getElementById('play_pause').setAttribute("class", "icon-play");
+                    var msg = '<p>';
+                }
+                if (response.playing == false) {
+                    document.getElementById('play_pause').setAttribute("class", "icon-pause");
+                    var msg = '<p class="gray">';
+                }
                 if (response.artist != null & response.title != null & response.album != null & response.date != null)
                     {msg += response.artist + ': <strong>' + response.title + '</strong> (' + response.album + ', ' + response.date.substring(0,4) + ')'}
                 else if (response.artist != null & response.title != null & response.album != null)
